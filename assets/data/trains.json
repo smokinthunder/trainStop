@@ -1,0 +1,57 @@
+{
+    "trains": [
+      {
+        "train_number": "12345",
+        "train_name": "Sample Express",
+        "source_station": "NDLS",
+        "destination_station": "BOM",
+        "stops": [
+          {
+            "station_code": "NDLS",
+            "station_name": "New Delhi",
+            "arrival_time": "08:00 AM",
+            "departure_time": "08:10 AM"
+          },
+          {
+            "station_code": "AGRA",
+            "station_name": "Agra",
+            "arrival_time": "10:30 AM",
+            "departure_time": "10:35 AM"
+          },
+          {
+            "station_code": "BOM",
+            "station_name": "Mumbai",
+            "arrival_time": "06:45 PM",
+            "departure_time": "06:55 PM"
+          }
+        ]
+      },
+      {
+        "train_number": "67890",
+        "train_name": "Test Superfast",
+        "source_station": "BOM",
+        "destination_station": "KOL",
+        "stops": [
+          {
+            "station_code": "BOM",
+            "station_name": "Mumbai",
+            "arrival_time": "09:00 AM",
+            "departure_time": "09:10 AM"
+          },
+          {
+            "station_code": "AGRA",
+            "station_name": "Agra",
+            "arrival_time": "01:30 PM",
+            "departure_time": "01:35 PM"
+          },
+          {
+            "station_code": "KOL",
+            "station_name": "Kolkata",
+            "arrival_time": "08:30 PM",
+            "departure_time": "08:40 PM"
+          }
+        ]
+      }
+    ]
+  }
+  

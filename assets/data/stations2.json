@@ -1,0 +1,20 @@
+{
+    "stations": [
+      {
+        "station_code": "NDLS",
+        "station_name": "New Delhi",
+        "state": "Delhi"
+      },
+      {
+        "station_code": "BOM",
+        "station_name": "Mumbai",
+        "state": "Maharashtra"
+      },
+      {
+        "station_code": "KOL",
+        "station_name": "Kolkata",
+        "state": "West Bengal"
+      }
+    ]
+  }
+  
