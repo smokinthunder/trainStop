@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:train_stop2/models/selected_stations.dart';
 import 'package:train_stop2/models/stations.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:train_stop2/screens/home.dart';
 
 class InputStop extends StatelessWidget {
   const InputStop({super.key});
@@ -52,6 +55,11 @@ class _StopSelectState extends State<StopSelect> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedStationsProvider = context.watch<SelectedStationsProvider>();
+    final selectedStations = selectedStationsProvider.selectedStations;
+    if (selectedStations[id] != null) {
+      yourController.text = selectedStations[id]!.name;
+    }
     return Container(
       margin: const EdgeInsets.all(20),
       child: Row(
@@ -78,11 +86,13 @@ class _StopSelectState extends State<StopSelect> {
                 );
               },
               onSuggestionSelected: (Station suggestion) {
-                yourController.text = suggestion.name;
                 setState(() {
-                  selectedStation = suggestion;
+                  yourController.text = suggestion.name;
+
+                  // selectedStation = suggestion;
+                  // selectedStations[id] = suggestion;
                 });
-                selectedStations[id] = suggestion;
+                selectedStationsProvider.editAtIndex(id, suggestion);
               },
               transitionBuilder: (context, suggestionsBox, controller) {
                 return suggestionsBox;
@@ -92,50 +102,28 @@ class _StopSelectState extends State<StopSelect> {
               },
             ),
           ),
-          Expanded(
-            // height: 35,
-            // width: 35,
-            // decoration: BoxDecoration(
-            //   color: Colors.red,
-            //   borderRadius: BorderRadius.circular(5),
-            // ),
-            child: IconButton(
-              onPressed: () {
-                selectedStations.removeAt(0);
-              },
-              iconSize: 18,
-              icon: const Icon(Icons.delete),
-            ),
+          IconButton(
+            onPressed: () {
+                selectedStationsProvider.makeItNull(id);
+                yourController.text = '';
+              
+            },
+            iconSize: 18,
+            icon: const Icon(Icons.cancel_outlined),
+          ),
+          IconButton(
+            onPressed: () {
+              selectedStationsProvider.delete(id);
+
+              // Navigator.of(context).pushReplacement(MaterialPageRoute(
+              //   builder: (context) => const Home(),
+              // ));
+            },
+            iconSize: 18,
+            icon: const Icon(Icons.delete_outline),
           )
-          
         ],
       ),
     );
   }
 }
-
-// class DeleteButton extends StatelessWidget {
-//   const DeleteButton({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 35,
-//       width: 35,
-//       decoration: BoxDecoration(
-//         color: Colors.red,
-//         borderRadius: BorderRadius.circular(5),
-//       ),
-//       child: IconButton(
-//         color: Colors.white,
-//         onPressed: () {
-//           selectedStations.removeAt(id);
-//         },
-//         iconSize: 18,
-//         icon: const Icon(Icons.delete),
-//       ),
-//     );
-//   }
-// }
-
-

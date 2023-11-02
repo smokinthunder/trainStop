@@ -31,4 +31,4 @@ Future<List<Station>> loadStations() async {
 
   return stations;
 }
-List<Station?> selectedStations=[null,null] ;
+// List<Station?> selectedStations=[null,null] ;

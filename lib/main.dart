@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:train_stop2/screens/home.dart';
 
+import 'models/selected_stations.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,10 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-
-      home: Home(),
+    return ChangeNotifierProvider<SelectedStationsProvider>(
+      create: (context) => SelectedStationsProvider(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+      ),
     );
   }
 }
